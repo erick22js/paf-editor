@@ -1,0 +1,190 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<!-- Top Workspace Menu -->
+		<div id="hotbar_topic" class="hotbar frame">
+			<div id="hotbar_file" class="hotbar-item frame">File</div>
+			<div id="hotbar_project" class="hotbar-item frame">Project</div>
+			<div id="hotbar_tools" class="hotbar-item frame">Tools</div>
+			<div id="hotbar_help" class="hotbar-item frame">Help</div>
+		</div>
+		
+		<!-- Editor View -->
+		<div id="editor" class="editor frame">
+			<!-- Resources Panel -->
+			<div class="resources frame">
+				<div class="header frame">
+					Resources
+				</div>
+				<div id="editor_resources" class="editor-resources frame"></div>
+			</div>
+			
+			<!-- Display Panel -->
+			<div id="editor_display" class="display frame">
+				<!-- Regular Panel -->
+				<canvas id="display_regular" class="regular-view frame"></canvas>
+				
+				<!-- Animation Panel -->
+				<div id="display_animation" class="frame">
+					<!-- View Panel -->
+					<canvas id="animation_view" class="animation-view frame"></canvas>
+					
+					<!-- Timeline Panel -->
+					<div id="panel_timeline" class="panel-timeline frame">
+						<div class="tools-timeline frame">
+							Timeline
+						</div>
+						
+						<canvas id="animation_timeline" class="animation-timeline frame"></canvas>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Properties Panel -->
+			<div id="editor_properties" class="properties frame">
+				<div id="resource_header" class="header frame">
+					Resource
+				</div>
+				
+				<!-- Image Panel -->
+				<div id="properties_image" class="properties-panel frame" hidden>
+					<text class="ui-text">Name</text>
+					<input type="text" id="prop_image_name" class="ui-edittext ui"/>
+					
+					<text class="ui-text" id="prop_img_dimension">Width: xpx; Height: xpx;</text>
+					
+					<button class="ui-button ui" id="prop_image_pick">Pick Image</button>
+					
+					<button class="ui-button ui" id="prop_image_save">Save Image</button>
+					
+					<br/><br/><br/><br/>
+				</div>
+				
+				<!-- Source Panel -->
+				<div id="properties_source" class="properties-panel frame" hidden>
+					<text class="ui-text">Image</text>
+					<img src="tests/atlas.png" id="prop_source_image" class="ui-image ui"/>
+					
+					<text class="ui-text">Offset</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_source_x" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_source_y" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<text class="ui-text">Size</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_source_w" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_source_h" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<button class="ui-button ui" id="prop_source_reset">Reset</button>
+					
+					<br/><br/><br/><br/>
+				</div>
+				
+				<!-- Object Panel -->
+				<div id="properties_object" class="properties-panel frame" hidden>
+					<text class="ui-text">Name</text>
+					<input type="text" id="prop_object_name" class="ui-edittext ui"/>
+					
+					<text class="ui-text">Source</text>
+					<img src="tests/atlas.png" id="prop_object_image" class="ui-image ui"/>
+					
+					<text class="ui-text">Offset</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_object_x" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_object_y" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<button class="ui-button ui" id="prop_object_btop">Top</button>
+					<button class="ui-button ui" id="prop_object_bcenter">Center</button>
+					<button class="ui-button ui" id="prop_object_bbottom">Bottom</button>
+					
+					<br/><br/><br/><br/>
+				</div>
+				
+				<!-- Animation Panel -->
+				<div id="properties_animation" class="properties-panel frame" hidden>
+					<text class="ui-text" id="prop_animation_object">Object: [NULL]</text>
+					
+					<br/>
+					
+					<text class="ui-text">Source</text>
+					<img src="tests/atlas.png" id="prop_animation_image" class="ui-image ui"/>
+					
+					<div class="ui-checkopt">
+						<text class="ui-text ui-text-center">Visible</text><input type="checkbox" id="prop_animation_visible" class="ui-checkbox ui"/>
+					</div>
+					
+					<text class="ui-text">Trigger Text</text>
+					<input type="text" id="prop_animation_trigger" class="ui-edittext ui"/>
+					
+					<text class="ui-text">Position</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_animation_position_x" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_animation_position_y" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<text class="ui-text">Scale</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_animation_scale_x" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_animation_scale_y" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<text class="ui-text">Skew</text>
+					<div class="ui-vector2">
+						<text class="ui-text ui-text-center">X</text><input type="number" id="prop_animation_skew_x" class="ui-edittext ui" value="0"/>
+						<text class="ui-text ui-text-center">Y</text><input type="number" id="prop_animation_skew_y" class="ui-edittext ui" value="0"/>
+					</div>
+					
+					<text class="ui-text">Rotation</text>
+					<input type="number" id="prop_animation_rotation" class="ui-edittext ui" value="0"/>
+					
+					<text class="ui-text">Color</text>
+					<input type="color" id="prop_animation_color" class="ui-edittext ui" value="#FFFFFF"/>
+					
+					<text class="ui-text">Opacity</text>
+					<input type="number" id="prop_animation_opacity" min="0" max="1" class="ui-edittext ui"/>
+					
+					<div class="ui-checkopt">
+						<text class="ui-text ui-text-center">Flip X</text><input type="checkbox" id="prop_animation_flipx" class="ui-checkbox ui"/>
+					</div>
+					
+					<div class="ui-checkopt">
+						<text class="ui-text ui-text-center">Flip Y</text><input type="checkbox" id="prop_animation_flipy" class="ui-checkbox ui"/>
+					</div>
+					
+					<br/><br/><br/><br/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Player View -->
+		<div id="player_view" class="floating editor" style="visibility: hidden;">
+			<button id="player_close">Close</button>
+			<div style="width:100%; height:90%;">
+				<canvas id="player_display" style="background-color:white; width:100%; height:100%;"></canvas>
+			</div>
+		</div>
+		
+		<!-- Script Section -->
+		<script src="scripts/math.js"></script>
+		<script src="scripts/file.js"></script>
+		<script src="scripts/image.js"></script>
+		<script src="scripts/pako.js"></script>
+		<script src="scripts/boxorder.js"></script>
+		<script src="scripts/paf-project.js"></script>
+		<script src="scripts/paf-player.js"></script>
+		<script src="scripts/paf-workspace.js"></script>
+		<script src="scripts/paf-save.js"></script>
+		<script src="scripts/paf-format.js"></script>
+		<script src="scripts/paf-tools.js"></script>
+		<script src="scripts/pam.js"></script>
+		<script src="scripts/reanim.js"></script>
+		<script src="scripts/ui.js"></script>
+		<script src="scripts/main.js"></script>
+	</body>
+</html>

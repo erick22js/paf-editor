@@ -1,0 +1,100 @@
+
+// HEADER SECTION
+
+uint8[4]: "MPAF" // File extension identifier
+uint32: 0x2 // File format version
+uint32: ~ // File data version
+uint8: ~ // FPS of reproduction
+uint32: ~ // Offset in file for Image Section
+uint32: ~ // Offset in file for Sources Section
+uint32: ~ // Offset in file for Objects Section
+uint32: ~ // Offset in file for Animations Section
+
+// IMAGE SECTION
+
+uint16: ~ // Count of total images
+
+[]{ // List of images structure
+	uint8: ~ // Length of image name
+	char[]: ~ // Name of image
+	uint32: ~ // Length of auto contained stream for image binary
+	byte[]: ~ // The stream for image binary
+}
+
+// SOURCES SECTION
+
+uint16: ~ // Count of total sources
+
+[]{ // List of sources structure
+	uint16: ~ // The actual image of source
+	uint16: ~ // Source X position
+	uint16: ~ // Source Y position
+	uint16: ~ // Source width
+	uint16: ~ // Source height
+}
+
+// OBJECTS SECTION
+
+uint16: ~ // Count of total objects
+
+[]{ // List of objects structure
+	uint16: ~ // The default resource of object
+	uint8: ~ // Length of object name
+	char[]: ~ // Name of object
+}
+
+// ANIMATIONS SECTION
+
+uint16: ~ // Count of total animations
+
+[]{ // List of animations structure
+	uint8: ~ // Length of animation name
+	char[]: ~ // Name of animation
+	
+	uint16: ~ // Count of objects references
+	[]{ // List of objects references structure
+		uint16: // Index of object
+	}
+	
+	uint32: ~ // Count of frames in animation
+	[]{ // List of frames structure
+		uint16: ~ // Count of actions in frame
+		[]{ // List of actions structure
+			uint16: ~ // Index of object reference
+			uint8: { // Flags of action
+				0 // Visible
+				1 // Trigger
+				2 // Source
+				3 // Scale/Rotate
+				4 // Translate
+				5 // Colorize
+				6 // Flip X
+				7 // Flip Y
+			}
+			if flags::Trigger{
+				uint8: ~ // Length of command
+				char[]: ~ // The command
+			}
+			if flags::Source{
+				uint16: ~ // Index of source to replace by
+			}
+			if flags::Scale/Rotate{
+				float32: ~ // Matrix component A (X Scale)
+				float32: ~ // Matrix component B (Y Skew)
+				float32: ~ // Matrix component C (X Skew)
+				float32: ~ // Matrix component D (Y Scale)
+			}
+			if flags::Translate{
+				float32: ~ // Matrix component X (X Translation)
+				float32: ~ // Matrix component Y (Y Translation)
+			}
+			if flags::Colorize{
+				uint8: ~ // Color component Red
+				uint8: ~ // Color component Green
+				uint8: ~ // Color component Blue
+				uint8: ~ // Color component Alpha
+			}
+		}
+	}
+}
+

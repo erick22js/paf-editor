@@ -1,0 +1,385 @@
+
+body{
+	background-color: #444444;
+	color: white;
+	margin: 0%;
+	overflow: hidden;
+	font-family: system-ui;
+}
+
+/* ScrollBar styling */
+
+/* width */
+::-webkit-scrollbar {
+	width: 10pt;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5pt #111;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #5F5F5F;
+	border-radius: 10px;
+}
+
+
+/* Floating Layout */
+
+.floating{
+	position: absolute;
+}
+
+#player_view{
+    left: 15%;
+    top: 15%;
+    width: 70%;
+    height: 70%;
+    background-color: #444444;
+    border: 2px solid black;
+	display: inline;
+    box-shadow: 0px 0px 100px black;
+}
+
+/* General Layout */
+
+.frame{
+	border: 0px solid black;
+}
+
+.hotbar{
+	width: 100%;
+	height: 8%;
+	border-bottom: 2pt solid black;
+	display: flex;
+}
+
+.hotbar-item{
+	width: 10%;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+}
+
+.hotbar-item:hover{
+	background-color: #666;
+}
+
+.hotbar-item:active{
+	background-color: #888;
+}
+
+.editor{
+	width: 100%;
+	height: 92%;
+	display: flex;
+}
+
+.resources{
+	width: 25%;
+	height: 100%;
+	border-right: 2pt solid black;
+	overflow: hidden;
+}
+
+.resources > canvas{
+	width: 100%;
+	height: 92%;
+}
+
+.editor-resources{
+	width: 100%;
+	height: 92%;
+	padding-bottom: 100pt;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.resource-item{
+	width: 100%;
+	height: 28pt;
+	display: flex;
+	overflow: hidden;
+}
+
+.resource-item:hover{
+	background-color: #666;
+}
+
+.resource-item:active{
+	background-color: #888;
+}
+
+.resource-item > *{
+	height: 80%;
+}
+
+.display{
+	width: 45%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.display > *{
+	width: 100%;
+	height: 100%;
+}
+
+.regular-view{
+	user-select: none;
+}
+
+.animation-view{
+	width: 100%;
+	height: 70%;
+	user-select: none;
+}
+
+.panel-timeline{
+	width: 100%;
+	height: 30%;
+	border-top: 2pt solid black;
+	user-select: none;
+}
+
+.tools-timeline{
+	width: 100%;
+	height: 20%;
+	border-bottom: 2pt solid black;
+}
+
+.animation-timeline{
+	width: 100%;
+	height: 80%;
+	background-color: #666666;
+}
+
+.properties{
+	width: 30%;
+	height: 100%;
+	border-left: 2pt solid black;
+	overflow: hidden;
+}
+
+.properties > *{
+	width: 100%;
+	height: 92%;
+	overflow-y: scroll;
+}
+
+.properties-panel{
+	width: 100%;
+	padding-top: 10pt;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.header{
+	width: 100%;
+	height: 8%;
+	border-bottom: 2pt solid black;
+	display: flex;
+	align-items: center;
+	padding-left: 10%;
+	user-select: none;
+}
+
+/* Auto Elements */
+
+.dropdown{
+	background-color: #888;
+	color: white;
+	box-shadow: 1pt 1pt 2pt black;
+	max-height: 50vh;
+	overflow-y: auto;
+}
+
+.dropdown div{
+	padding-top: 3pt;
+	padding-bottom: 3pt;
+	padding-left: 8pt;
+	padding-right: 8pt;
+	height: 25pt;
+	user-select: none;
+	display: flex;
+}
+
+.dropdown div:hover{
+	background-color: #666;
+}
+
+.dropdown div:active{
+	background-color: #444;
+}
+
+
+/* User Interface */
+
+.ui-text{
+	width: 90%;
+	margin-top: 4%;
+	margin-left: 5%;
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+
+.ui-text-center{
+	margin-top: 8%;
+	justify-content: space-around;
+}
+
+.ui-edittext{
+	width: 90%;
+	height: 24pt;
+	margin-top: 4%;
+	margin-left: 5%;
+	margin-bottom: 4%;
+	border-radius: 4pt;
+	color: white;
+	background-color: #111;
+	outline: none;
+	border: 2px solid #222;
+}
+
+.ui-edittext:hover{
+	border: 2px solid #888;
+}
+
+.ui-edittext:focus{
+	border: 2px solid white;
+}
+
+.ui-checkbox{
+	appearance: none;
+	background-color: #111;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 24pt;
+	height: 24pt;
+	margin: 0;
+	border: 3px solid #222;
+	border-radius: 4pt;
+	display: grid;
+	place-content: center;
+}
+
+.ui-checkbox:hover{
+	border: 2px solid #888;
+}
+
+.ui-checkbox::before{
+	transform-origin: top left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+	content: "";
+	width: 20pt;
+	height: 20pt;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+.ui-checkbox:checked::before{
+	background-color: #0F0;
+	transform: scale(1);
+}
+
+.ui-image{
+	width: 90%;
+	height: 100pt;
+	object-fit: contain;
+	margin-top: 4%;
+	margin-left: 5%;
+	margin-bottom: 4%;
+	border-radius: 4pt;
+	
+	background-image: 
+		linear-gradient(90deg, #333 10pt, #555 10pt),
+		linear-gradient(90deg, #555 10pt, #333 10pt),
+		linear-gradient(90deg, #333 10pt, #555 10pt),
+		linear-gradient(90deg, #555 10pt, #333 10pt),
+		linear-gradient(90deg, #333 10pt, #555 10pt),
+		linear-gradient(90deg, #555 10pt, #333 10pt),
+		linear-gradient(90deg, #333 10pt, #555 10pt),
+		linear-gradient(90deg, #555 10pt, #333 10pt),
+		linear-gradient(90deg, #333 10pt, #555 10pt),
+		linear-gradient(90deg, #555 10pt, #333 10pt),
+		linear-gradient(90deg, #333 10pt, #555 10pt);
+	background-position: 0 0, 0 10pt, 0 20pt, 0 30pt, 0 40pt, 0 50pt, 0 60pt, 0 70pt, 0 80pt, 0 90pt, 0 100pt;
+	background-repeat: repeat-x;
+	background-size: 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt, 20pt 10pt;
+	
+	border: 2px solid #222;
+}
+
+.ui-button{
+	width: 90%;
+	height: 24pt;
+	margin-top: 4%;
+	margin-left: 5%;
+	margin-bottom: 6%;
+	border-radius: 4pt;
+	color: white;
+	background-image: linear-gradient(#555, #333);
+	border: 2px solid #222;
+	user-select: none;
+}
+
+.ui-button:hover{
+	background-image: linear-gradient(#222, #444);
+}
+
+.ui-button:active{
+	background-image: linear-gradient(#000, #222);
+}
+
+.ui-vector2{
+	margin-left: 5%;
+	width: 90%;
+	height: 24pt;
+	padding-bottom: 4%;
+	display: flex;
+}
+
+.ui-vector2 text{
+	margin-left: 0%;
+	max-width: 10%;
+	padding-left: 0%;
+	text-align: center;
+}
+
+.ui-vector2 .ui-edittext{
+	margin-left: 0%;
+	width: 40%;
+}
+
+.ui-checkopt{
+	margin-left: 5%;
+	width: 90%;
+	height: 24pt;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	display: flex;
+    justify-content: space-between;
+}
+
+.ui-checkopt text{
+	margin-top: 0%;
+	margin-left: 0%;
+	width: 80%;
+    justify-content: left;
+}
+
+.ui-checkopt .ui-edittext{
+	margin-top: 0%;
+	margin-left: 0%;
+	width: 20%;
+}
+
