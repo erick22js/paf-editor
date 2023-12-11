@@ -133,7 +133,7 @@ hotbar_project.addEventListener('click', function(ev){
 		{
 			"name": "Grid",
 			"click": function(){
-				proj.grid = Number(prompt("Insert the size of grid:", proj.grid))||proj.grid;
+				proj.grid = Number(prompt("Insert the size of grid:", proj.grid))||0;
 			}
 		},
 	]);

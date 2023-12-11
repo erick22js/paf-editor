@@ -1408,16 +1408,28 @@ function PAFWorkspace(){
 												
 												action.getTransform().translate(origin.x, origin.y);
 												if(ui_props.animation.axys&ANM_X){
-													acu.x += x + action.getTransform().x;
-													var i_x = (~~(acu.x/project.grid)) * project.grid;
-													action.getTransform().x = i_x;
-													acu.x %= project.grid;
+													if (project.grid){
+														acu.x += x + action.getTransform().x;
+														var i_x = (~~(acu.x/project.grid)) * project.grid;
+														action.getTransform().x = i_x;
+														acu.x %= project.grid;
+													}
+													else {
+														action.getTransform().x += x;
+														acu.x = 0;
+													}
 												}
 												if(ui_props.animation.axys&ANM_Y){
-													acu.y += y + action.getTransform().y;
-													var i_y = (~~(acu.y/project.grid)) * project.grid;
-													action.getTransform().y = i_y;
-													acu.y %= project.grid;
+													if (project.grid){
+														acu.y += y + action.getTransform().y;
+														var i_y = (~~(acu.y/project.grid)) * project.grid;
+														action.getTransform().y = i_y;
+														acu.y %= project.grid;
+													}
+													else {
+														action.getTransform().y += y;
+														acu.y = 0;
+													}
 												}
 												action.getTransform().translate(-origin.x, -origin.y);
 											}
@@ -1951,7 +1963,7 @@ function PAFWorkspace(){
 				}
 			}
 		}
-		canvas.onmousewheel = function(ev){
+		canvas.onwheel = canvas.onmousewheel = function(ev){
 			var x = ev.offsetX;
 			var y = ev.offsetY;
 			if(canvas._onmousewheel){

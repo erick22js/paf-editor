@@ -6,7 +6,7 @@ function PAFProject(){
 	// PROJECT Properties
 	_project.project_version = 1;
 	_project.fps = 30;
-	_project.grid = 1;
+	_project.grid = 0;
 	
 	// PROJECT Resources managment
 	var _resources = {};
